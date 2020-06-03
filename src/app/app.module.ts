@@ -13,6 +13,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodoComponent } from './todo/todo.component';
 import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor-basic-auth.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,16 @@ import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor
     MenuComponent,
     FooterComponent,
     LogoutComponent,
-    TodoComponent
+    TodoComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true }

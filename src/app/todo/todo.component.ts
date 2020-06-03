@@ -48,4 +48,8 @@ export class TodoComponent implements OnInit {
     return this.todo.description.trim().length > 0;
   }
 
+  public cancel(): void {
+    this.router.navigate(['todos']);
+  }
+
 }

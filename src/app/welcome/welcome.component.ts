@@ -11,6 +11,7 @@ export class WelcomeComponent implements OnInit {
 
   public name = '';
   public welcomeMessageFromService = '';
+  public loading = false;
 
   constructor(private route: ActivatedRoute,
     private welcomeDataService: WelcomeDataService) { }
@@ -20,6 +21,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   public getWelcomeMessage(): void {
+    this.loading = true;
     this.welcomeDataService.executeHelloWorldWithPathVariable(this.name).subscribe(res =>
       this.handleSuccessfulResponse(res),
       error => this.handleErrorfulResponse(error));
@@ -27,10 +29,12 @@ export class WelcomeComponent implements OnInit {
 
   public handleSuccessfulResponse(response: any) {
     this.welcomeMessageFromService = response.message;
+    this.loading = false;
   }
 
   public handleErrorfulResponse(error: any) {
     this.welcomeMessageFromService = error.error.message;
+    this.loading = false;
   }
 
 }
